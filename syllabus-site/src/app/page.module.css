@@ -17,7 +17,6 @@
 }
 
 
-
 .main {
   display: flex;
   flex-direction: column;
@@ -152,7 +151,7 @@ a.secondary {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   .logo {
     filter: invert();
   }
