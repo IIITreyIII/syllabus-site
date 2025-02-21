@@ -3,23 +3,23 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function LearningTheories() {
-  // The data for each learning theory
+  // learnign theory data
   const theories = [
     {
       title: "Cognitive Apprenticeship",
       content: (
         <>
-          <p>
-            The class is completely asynchronous, meaning the students have to be
-            self-motivated to get the material done themselves and work on the
-            projects on their own. Some aspects that may be missing from this theory
-            may be that the students do not have access to modeling or observation.
-          </p>
-          <p>
-            It is unclear if students have any group projects. With it being completely
-            asynchronous, we assume that perhaps not, but the material does seem to
-            lend itself well to this possibility.
-          </p>
+          <ul>
+            <li>
+              The class is completely asynchronous, meaning the students have to be
+              self-motivated to get the material done themselves and work on the projects on their own.
+              Some aspects that may be missing from this theory may be that the students do not have access to modeling or observation.
+            </li>
+            <li>
+              It is unclear if students have any group projects. With it being completely asynchronous,
+              we assume that perhaps not, but the material does seem to lend itself well to this possibility.
+            </li>
+          </ul>
         </>
       ),
     },
@@ -27,11 +27,11 @@ export default function LearningTheories() {
       title: "Zone of Proximal Development",
       content: (
         <>
-          <p>
-            This is a 400-level class, meaning that students should have the required
-            prerequisite knowledge and coursework to competently complete this
-            course.
-          </p>
+          <ul>
+            <li>
+              This is a 400-level class, meaning that students should have the required prerequisite knowledge and coursework to competently complete this course.
+            </li>
+          </ul>
         </>
       ),
     },
@@ -39,42 +39,114 @@ export default function LearningTheories() {
       title: "Epistemological",
       content: (
         <>
+          <ul>
+            <li>
+              <strong>Empiricism:</strong> Observations, sensory experience, experiential learning, teacher is the facilitator.
+            </li>
+            <li>
+              <strong>Constructivism:</strong> Knowledge through experience.
+            </li>
+            <li>
+              This course has been designed to integrate theoretical concepts with their practical applications to teach both the theory and the practice of information systems risk analysis. The emphasis on practice is important because in many areas of information systems, theory lags practice.
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: "Project Based Learning",
+      content: (
+        <>
+          <ul>
+            <li>
+              <strong>Project (CIS 524 students only):</strong>
+              <ul>
+                <li>
+                  Purpose of the project is to provide an opportunity to apply the competencies gained to the lessons of this class to develop a risk management plan for a fictitious to replace its outdated plan. By the end of the class, students will have 1) individual presentation and 2) individual report.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Project Report (70 points):</strong>
+              <ul>
+                <li>
+                  This is a report which includes details of risk management plan, risk assessment plan, risk mitigation plan, business impact analysis plan, business continuity plan, disaster recovery plan, and computer incident response team plan. In addition, this report needs to include proper references. This has to be submitted on the day of the presentation. (APA Style, Font size: 11, Double Line Space, Time New Roman).
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Project Presentations (30 points):</strong>
+              <ul>
+                <li>
+                  This presentation needs to include not only the overall information regarding the development of the risk management plan but also provides detailed processes of each part of the risk management planning that students performed. Each student needs to create a PowerPoint slide with the recorded explanation then submit it via Canvas. A softcopy also needs to be emailed to the professor (jakelee@latech.edu) before the beginning of the presentation.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: "Pragmatism",
+      content: (
+        <>
+          <ul>
+            <li>To introduce risk management business challenges</li>
+            <li>To cover risk assessment approaches and apply risk assessment into risk mitigation plan</li>
+            <li>Developing risk management plan</li>
+            <li>Implementation and maintenance of risk mitigation plans</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: "Cognitivism",
+      content: (
+        <>
           <p>
-            <strong>Empiricism:</strong> Observations, sensory experience, experiential learning,
-            teacher is the facilitator.
+            Knowledge involves internal mental processes like memory, perception, and problem-solving.
           </p>
-          <p>
-            <strong>Constructivism:</strong> Knowledge through experience.
-          </p>
-          <p>
-            This course has been designed to integrate theoretical concepts with their
-            practical applications to teach both the theory and the practice of
-            information systems risk analysis. The emphasis on practice is important
-            because in many areas of information systems, theory lags practice.
-          </p>
+        </>
+      ),
+    },
+    {
+      title: "Behaviorism",
+      content: (
+        <>
+          <ul>
+            <li>
+              The student shall be responsible for all material covered in the class. Each exam will include not only the material from the assigned text chapters, but also from any readings, and any other materials covered in the class lectures. You are also responsible for any announcements made in class as well as Canvas postings and announcements via email.
+            </li>
+            <li>
+              Policies on academic integrity, using IA, and attendance.
+            </li>
+          </ul>
         </>
       ),
     },
   ];
 
-  // Track which theory is open (null if none are open)
+  // tracks what opened/closed
   const [openIndex, setOpenIndex] = useState(null);
 
-  // Toggle function
+  // tracks what box is hovered
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  //  opening/closing content
   const handleToggle = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
     <main style={styles.main}>
-      {/* Navigation Bar with Home Button */}
+      {/* nav bar/home button */}
       <div style={styles.navBar}>
         <Link href="/">
           <button style={styles.homeButton}>⬅️ Home</button>
         </Link>
       </div>
 
-      {/* Header Box */}
+      {/* header */}
       <div style={styles.headerBox}>
         <h1 style={styles.headerTitle}>Learning Theories</h1>
         <p style={styles.headerSubtitle}>
@@ -82,28 +154,30 @@ export default function LearningTheories() {
         </p>
       </div>
 
-      {/* Theories List (Vertical Accordion) */}
+      {/* theories list*/}
       <div style={styles.theoriesContainer}>
         {theories.map((theory, index) => {
           const isOpen = openIndex === index;
+          const isHovered = hoveredIndex === index;
+
           return (
             <div key={index} style={styles.theoryBox}>
-              {/* Title Row */}
+              {/* theory title */}
               <div
-                style={styles.titleRow}
+                style={{
+                  ...styles.titleRow,
+                  // Apply hover style if this row is hovered
+                  backgroundColor: isHovered ? "#f0f0f0" : "#fff",
+                }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => handleToggle(index)}
               >
                 <span>{theory.title}</span>
-                <span style={styles.arrow}>
-                  {isOpen ? "▾" : "▸"}
-                </span>
+                <span style={styles.arrow}>{isOpen ? "▾" : "▸"}</span>
               </div>
-              {/* Collapsible Content */}
-              {isOpen && (
-                <div style={styles.contentArea}>
-                  {theory.content}
-                </div>
-              )}
+              
+              {isOpen && <div style={styles.contentArea}>{theory.content}</div>}
             </div>
           );
         })}
@@ -172,6 +246,7 @@ const styles = {
     fontWeight: "bold",
     fontSize: "1rem",
     borderBottom: "1px solid #eaeaea",
+    transition: "background-color 0.3s ease",
   },
   arrow: {
     marginLeft: "0.5rem",
