@@ -1,10 +1,14 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  // Track hover state for the "Learning Theories" button
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+
   return (
     <main style={styles.mainContainer}>
-      {/* header */}
+      {/* Header */}
       <div style={styles.headerSection}>
         <h1 style={styles.title}>
           Welcome to the Syllabus Project <span style={{ fontSize: "1.2rem" }}>📚</span>
@@ -12,7 +16,7 @@ export default function Home() {
         <p style={styles.subtitle}>A quick guide on effective syllabus creation</p>
       </div>
 
-      {/* contributors & theories Box */}
+      {/* Contributors & Theories Box */}
       <div style={styles.contentBox}>
         <h2 style={styles.boxTitle}>Contributors</h2>
         <ul style={styles.list}>
@@ -22,7 +26,7 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* intro */}
+      {/* Intro */}
       <div style={styles.contentBox}>
         <p>
           We gathered about a dozen college-level course syllabi from a few different universities.
@@ -31,7 +35,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* course Information */}
+      {/* Course Information */}
       <div style={styles.contentBox}>
         <h2 style={styles.boxTitle}>Course Information</h2>
         <ul style={styles.list}>
@@ -54,10 +58,18 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* nav button */}
+      {/* Navigation Button */}
       <div style={styles.buttonContainer}>
         <Link href="/learning-theories">
-          <button style={styles.button}>
+          <button
+            style={{
+              ...styles.button,
+              // hover bg color
+              backgroundColor: isButtonHovered ? "#0050c3" : "#0070f3",
+            }}
+            onMouseEnter={() => setIsButtonHovered(true)}
+            onMouseLeave={() => setIsButtonHovered(false)}
+          >
             Learning Theories <span>➡️</span>
           </button>
         </Link>
@@ -70,7 +82,7 @@ const styles = {
   mainContainer: {
     fontFamily: "Arial, sans-serif",
     padding: "2rem",
-    backgroundColor: "#f7f9fc",
+    background: "linear-gradient(to bottom, #f7f9fc, #e2e8f0)",
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
@@ -123,5 +135,6 @@ const styles = {
     padding: "0.75rem 1.25rem",
     cursor: "pointer",
     fontSize: "1rem",
+    transition: "background-color 0.3s ease",
   },
 };

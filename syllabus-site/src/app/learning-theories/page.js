@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function LearningTheories() {
-  // learnign theory data
+  // Learning theory data
   const theories = [
     {
       title: "Cognitive Apprenticeship",
@@ -13,7 +13,8 @@ export default function LearningTheories() {
             <li>
               The class is completely asynchronous, meaning the students have to be
               self-motivated to get the material done themselves and work on the projects on their own.
-              Some aspects that may be missing from this theory may be that the students do not have access to modeling or observation.
+              Some aspects that may be missing from this theory may be that the students do not have
+              access to modeling or observation.
             </li>
             <li>
               It is unclear if students have any group projects. With it being completely asynchronous,
@@ -29,7 +30,8 @@ export default function LearningTheories() {
         <>
           <ul>
             <li>
-              This is a 400-level class, meaning that students should have the required prerequisite knowledge and coursework to competently complete this course.
+              This is a 400-level class, meaning that students should have the required prerequisite
+              knowledge and coursework to competently complete this course.
             </li>
           </ul>
         </>
@@ -41,13 +43,17 @@ export default function LearningTheories() {
         <>
           <ul>
             <li>
-              <strong>Empiricism:</strong> Observations, sensory experience, experiential learning, teacher is the facilitator.
+              <strong>Empiricism:</strong> Observations, sensory experience, experiential learning,
+              teacher is the facilitator.
             </li>
             <li>
               <strong>Constructivism:</strong> Knowledge through experience.
             </li>
             <li>
-              This course has been designed to integrate theoretical concepts with their practical applications to teach both the theory and the practice of information systems risk analysis. The emphasis on practice is important because in many areas of information systems, theory lags practice.
+              This course has been designed to integrate theoretical concepts with their practical
+              applications to teach both the theory and the practice of information systems risk
+              analysis. The emphasis on practice is important because in many areas of information
+              systems, theory lags practice.
             </li>
           </ul>
         </>
@@ -62,7 +68,10 @@ export default function LearningTheories() {
               <strong>Project (CIS 524 students only):</strong>
               <ul>
                 <li>
-                  Purpose of the project is to provide an opportunity to apply the competencies gained to the lessons of this class to develop a risk management plan for a fictitious to replace its outdated plan. By the end of the class, students will have 1) individual presentation and 2) individual report.
+                  Purpose of the project is to provide an opportunity to apply the competencies
+                  gained to the lessons of this class to develop a risk management plan for a fictitious
+                  to replace its outdated plan. By the end of the class, students will have 1) individual
+                  presentation and 2) individual report.
                 </li>
               </ul>
             </li>
@@ -70,7 +79,11 @@ export default function LearningTheories() {
               <strong>Project Report (70 points):</strong>
               <ul>
                 <li>
-                  This is a report which includes details of risk management plan, risk assessment plan, risk mitigation plan, business impact analysis plan, business continuity plan, disaster recovery plan, and computer incident response team plan. In addition, this report needs to include proper references. This has to be submitted on the day of the presentation. (APA Style, Font size: 11, Double Line Space, Time New Roman).
+                  This is a report which includes details of risk management plan, risk assessment plan,
+                  risk mitigation plan, business impact analysis plan, business continuity plan, disaster
+                  recovery plan, and computer incident response team plan. In addition, this report needs
+                  to include proper references. This has to be submitted on the day of the presentation.
+                  (APA Style, Font size: 11, Double Line Space, Time New Roman).
                 </li>
               </ul>
             </li>
@@ -78,7 +91,12 @@ export default function LearningTheories() {
               <strong>Project Presentations (30 points):</strong>
               <ul>
                 <li>
-                  This presentation needs to include not only the overall information regarding the development of the risk management plan but also provides detailed processes of each part of the risk management planning that students performed. Each student needs to create a PowerPoint slide with the recorded explanation then submit it via Canvas. A softcopy also needs to be emailed to the professor (jakelee@latech.edu) before the beginning of the presentation.
+                  This presentation needs to include not only the overall information regarding the
+                  development of the risk management plan but also provides detailed processes of each
+                  part of the risk management planning that students performed. Each student needs to
+                  create a PowerPoint slide with the recorded explanation then submit it via Canvas. A
+                  softcopy also needs to be emailed to the professor (jakelee@latech.edu) before the
+                  beginning of the presentation.
                 </li>
               </ul>
             </li>
@@ -115,7 +133,10 @@ export default function LearningTheories() {
         <>
           <ul>
             <li>
-              The student shall be responsible for all material covered in the class. Each exam will include not only the material from the assigned text chapters, but also from any readings, and any other materials covered in the class lectures. You are also responsible for any announcements made in class as well as Canvas postings and announcements via email.
+              The student shall be responsible for all material covered in the class. Each exam will
+              include not only the material from the assigned text chapters, but also from any readings,
+              and any other materials covered in the class lectures. You are also responsible for any
+              announcements made in class as well as Canvas postings and announcements via email.
             </li>
             <li>
               Policies on academic integrity, using IA, and attendance.
@@ -126,27 +147,39 @@ export default function LearningTheories() {
     },
   ];
 
-  // tracks what opened/closed
+  // track which theory is open
   const [openIndex, setOpenIndex] = useState(null);
 
-  // tracks what box is hovered
+  // track which title is hovered
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  //  opening/closing content
+  // Toggle function
   const handleToggle = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
+  // home hover state
+  const [isHomeHovered, setIsHomeHovered] = useState(false);
+
   return (
     <main style={styles.main}>
-      {/* nav bar/home button */}
+      {/* Navigation Bar with Home Button */}
       <div style={styles.navBar}>
         <Link href="/">
-          <button style={styles.homeButton}>⬅️ Home</button>
+          <button
+            style={{
+              ...styles.homeButton,
+              backgroundColor: isHomeHovered ? "#0050c3" : "#0070f3",
+            }}
+            onMouseEnter={() => setIsHomeHovered(true)}
+            onMouseLeave={() => setIsHomeHovered(false)}
+          >
+            ⬅️ Home
+          </button>
         </Link>
       </div>
 
-      {/* header */}
+      {/* Header Box */}
       <div style={styles.headerBox}>
         <h1 style={styles.headerTitle}>Learning Theories</h1>
         <p style={styles.headerSubtitle}>
@@ -154,7 +187,7 @@ export default function LearningTheories() {
         </p>
       </div>
 
-      {/* theories list*/}
+      {/* Theories List (Accordion) */}
       <div style={styles.theoriesContainer}>
         {theories.map((theory, index) => {
           const isOpen = openIndex === index;
@@ -162,11 +195,10 @@ export default function LearningTheories() {
 
           return (
             <div key={index} style={styles.theoryBox}>
-              {/* theory title */}
+              {/* Title Row */}
               <div
                 style={{
                   ...styles.titleRow,
-                  // Apply hover style if this row is hovered
                   backgroundColor: isHovered ? "#f0f0f0" : "#fff",
                 }}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -174,10 +206,27 @@ export default function LearningTheories() {
                 onClick={() => handleToggle(index)}
               >
                 <span>{theory.title}</span>
-                <span style={styles.arrow}>{isOpen ? "▾" : "▸"}</span>
+                {/* Rotating arrow when expanded */}
+                <span
+                  style={{
+                    ...styles.arrow,
+                    transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+                  }}
+                >
+                  ▸
+                </span>
               </div>
-              
-              {isOpen && <div style={styles.contentArea}>{theory.content}</div>}
+
+              {/* Collapsible Content */}
+              <div
+                style={{
+                  ...styles.collapsibleContent,
+                  maxHeight: isOpen ? "1000px" : "0",
+                  opacity: isOpen ? 1 : 0,
+                }}
+              >
+                <div style={styles.contentArea}>{theory.content}</div>
+              </div>
             </div>
           );
         })}
@@ -190,7 +239,7 @@ export default function LearningTheories() {
 const styles = {
   main: {
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "#f7f9fc",
+    background: "linear-gradient(to bottom, #f7f9fc, #e2e8f0)",
     minHeight: "100vh",
     padding: "1rem",
   },
@@ -205,6 +254,7 @@ const styles = {
     padding: "0.5rem 1rem",
     cursor: "pointer",
     fontSize: "1rem",
+    transition: "background-color 0.3s ease",
   },
   headerBox: {
     backgroundColor: "#fff",
@@ -251,6 +301,11 @@ const styles = {
   arrow: {
     marginLeft: "0.5rem",
     fontSize: "1.25rem",
+    transition: "transform 0.3s ease",
+  },
+  collapsibleContent: {
+    overflow: "hidden",
+    transition: "max-height 0.4s ease, opacity 0.4s ease",
   },
   contentArea: {
     padding: "1rem",
