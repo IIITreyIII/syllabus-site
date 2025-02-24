@@ -20,9 +20,9 @@ export default function Home() {
       <div style={styles.contentBox}>
         <h2 style={styles.boxTitle}>Contributors</h2>
         <ul style={styles.list}>
-          <li>Carly Spinazzola – ZPD</li>
-          <li>Zoe Ramachandran – Cognitive Apprenticeship</li>
-          <li>Eric Outley – Epistemological (Project Based Learning + Pragmatism)</li>
+          <li>Carly Spinazzola</li>
+          <li>Zoe Ramachandran</li>
+          <li>Eric Outley</li>
         </ul>
       </div>
 
