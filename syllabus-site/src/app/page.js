@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <main style={styles.mainContainer}>
-      {/* Header */}
+      {/* web header */}
       <div style={styles.headerSection}>
         <h1 style={styles.title}>
           Welcome to the Syllabus Project <span style={{ fontSize: "1.2rem" }}>📚</span>
@@ -16,7 +16,7 @@ export default function Home() {
         <p style={styles.subtitle}>A quick guide on effective syllabus creation</p>
       </div>
 
-      {/* Contributors & Theories Box */}
+      {/* box 1 names */}
       <div style={styles.contentBox}>
         <h2 style={styles.boxTitle}>Contributors</h2>
         <ul style={styles.list}>
@@ -26,7 +26,7 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* Intro */}
+      {/* box 2 intro */}
       <div style={styles.contentBox}>
         <p>
           We gathered about a dozen college-level course syllabi from a few different universities.
@@ -35,7 +35,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Course Information */}
+      {/* box 3 course info */}
       <div style={styles.contentBox}>
         <h2 style={styles.boxTitle}>Course Information</h2>
         <ul style={styles.list}>
@@ -58,7 +58,7 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* Navigation Button */}
+      {/* theories button */}
       <div style={styles.buttonContainer}>
         <Link href="/learning-theories">
           <button

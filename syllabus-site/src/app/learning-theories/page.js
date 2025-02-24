@@ -153,7 +153,7 @@ export default function LearningTheories() {
   // track which title is hovered
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // Toggle function
+  // toggle box click
   const handleToggle = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
@@ -163,7 +163,7 @@ export default function LearningTheories() {
 
   return (
     <main style={styles.main}>
-      {/* Navigation Bar with Home Button */}
+      {/* return home button */}
       <div style={styles.navBar}>
         <Link href="/">
           <button
@@ -179,7 +179,7 @@ export default function LearningTheories() {
         </Link>
       </div>
 
-      {/* Header Box */}
+      {/* header */}
       <div style={styles.headerBox}>
         <h1 style={styles.headerTitle}>Learning Theories</h1>
         <p style={styles.headerSubtitle}>
@@ -187,7 +187,7 @@ export default function LearningTheories() {
         </p>
       </div>
 
-      {/* Theories List (Accordion) */}
+      {/* theories list */}
       <div style={styles.theoriesContainer}>
         {theories.map((theory, index) => {
           const isOpen = openIndex === index;
@@ -195,7 +195,7 @@ export default function LearningTheories() {
 
           return (
             <div key={index} style={styles.theoryBox}>
-              {/* Title Row */}
+              {/* theory name box shown before clicked, at top of theory d ata) */}
               <div
                 style={{
                   ...styles.titleRow,
@@ -206,7 +206,6 @@ export default function LearningTheories() {
                 onClick={() => handleToggle(index)}
               >
                 <span>{theory.title}</span>
-                {/* Rotating arrow when expanded */}
                 <span
                   style={{
                     ...styles.arrow,
@@ -217,7 +216,7 @@ export default function LearningTheories() {
                 </span>
               </div>
 
-              {/* Collapsible Content */}
+              {/* collapse */}
               <div
                 style={{
                   ...styles.collapsibleContent,
@@ -235,7 +234,7 @@ export default function LearningTheories() {
   );
 }
 
-// --- Inline Styles ---
+// styling
 const styles = {
   main: {
     fontFamily: "Arial, sans-serif",
